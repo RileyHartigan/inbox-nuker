@@ -30,7 +30,8 @@ async function runDelete() {
 
   status.innerText = "Deleting...";
 
-  const url = "https://script.google.com/macros/s/AKfycbzALERNBMPl1KoSZuqCaWFaB_Kiwg3EGenUa6DCAQJpk9boGR2aquzUUCpKmH0Z_YY/exec" + encodeURIComponent(q);
+  const url = "https://script.google.com/macros/s/AKfycb12345/exec?q=" + encodeURIComponent(q);
+
 
   const res = await fetch(url);
   const text = await res.text();
