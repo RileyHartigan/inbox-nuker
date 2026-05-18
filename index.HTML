@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Nuker</title>
+</head>
+<body style="font-family:Arial; text-align:center; padding:40px;">
+  <h2>Email Nuker</h2>
+  <p>Delete thousands of emails instantly.</p>
+
+  <select id="query">
+    <option value="in:anywhere">Delete EVERYTHING</option>
+    <option value="category:promotions">Delete Promotions</option>
+    <option value="category:social">Delete Social</option>
+    <option value="older_than:1y">Delete Older Than 1 Year</option>
+    <option value="larger:5M">Delete Large Emails</option>
+  </select>
+
+  <br><br>
+
+  <button onclick="runDelete()" style="padding:15px 25px; font-size:18px;">
+    DELETE EMAILS
+  </button>
+
+  <p id="status"></p>
+
+<script>
+async function runDelete() {
+  const q = document.getElementById("query").value;
+  const status = document.getElementById("status");
+
+  status.innerText = "Deleting...";
+
+  const url = "https://script.google.com/macros/s/AKfycbzALERNBMPl1KoSZuqCaWFaB_Kiwg3EGenUa6DCAQJpk9boGR2aquzUUCpKmH0Z_YY/exec" + encodeURIComponent(q);
+
+  const res = await fetch(url);
+  const text = await res.text();
+
+  status.innerText = text;
+}
+</script>
+
+</body>
+</html>
